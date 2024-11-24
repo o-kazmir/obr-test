@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/users",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/users",
+          "encoding": "json",
+          "method": "POST",
+          "host": ["http://users:3000"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/users-api",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host": [
+            "http://users:3000"
+          ],
+          "url_pattern": "/docs",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {
+      "endpoint": "/docs/{file}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host": [
+            "http://users:3000"
+          ],
+          "encoding": "no-op",
+          "url_pattern": "/docs/{file}"
+        }
+      ]
+    }
+  ]
+}
